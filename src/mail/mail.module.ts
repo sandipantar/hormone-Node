@@ -11,7 +11,7 @@ import { join } from 'path';
       // or
       transport: {
         host: 'smtp.sendgrid.net',
-        secure: false,
+        secure: true,
         auth: {
           user: 'apikey',
           pass: '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',
