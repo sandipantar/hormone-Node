@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-const Schema = mongoose.Schema
+// const Schema = mongoose.Schema
 
 export const StudentSchema = new mongoose.Schema({
     studentID: {type:String, required: false},

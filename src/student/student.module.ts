@@ -5,11 +5,13 @@ import { StudentSchema } from './student.model';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CourseModule } from '../course/course.module';
 import { CrsmoduleModule } from '../crsmodule/crsmodule.module';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
   imports: [
     CourseModule,
     CrsmoduleModule,
+    MailModule,
     MongooseModule.forFeature([{
       name:'Student', 
       schema:StudentSchema,

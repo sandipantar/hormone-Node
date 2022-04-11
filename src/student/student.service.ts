@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { MailService } from '../mail/mail.service';
 import { Model } from 'mongoose';
 import { Student } from './student.model';
 
@@ -9,11 +10,14 @@ export class StudentService {
     constructor(
         @InjectModel('Student')
         private readonly studentModel:Model<Student>,
+        private mailService: MailService
     ) {}
 
     //create new Student
     async createStudent(std:Student): Promise <Student | undefined> {
+        const token = Math.floor(1000 + Math.random() * 9000).toString();
         const newStudent = new this.studentModel(std);
+        await this.mailService.sendUserConfirmation(newStudent, token);
         return await newStudent.save();
     }
     
