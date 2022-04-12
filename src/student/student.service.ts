@@ -15,9 +15,9 @@ export class StudentService {
 
     //create new Student
     async createStudent(std:Student): Promise <Student | undefined> {
-        const token = Math.floor(1000 + Math.random() * 9000).toString();
+        // const token = Math.floor(1000 + Math.random() * 9000).toString();
         const newStudent = new this.studentModel(std);
-        await this.mailService.sendUserConfirmation(newStudent, token);
+        // await this.mailService.sendUserConfirmation(newStudent, token);
         return await newStudent.save();
     }
     
