@@ -1,7 +1,7 @@
-import { truncate } from 'fs';
+// import { truncate } from 'fs';
 import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-import { Crsmodule,CrsmoduleSchema } from '../crsmodule/crsmodule.model';
+// import { Crsmodule,CrsmoduleSchema } from '../crsmodule/crsmodule.model';
 
 export const CourseSchema = new mongoose.Schema({
     couseName: {type:String, required: true},

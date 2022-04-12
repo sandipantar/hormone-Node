@@ -13,7 +13,7 @@ export const StudentSchema = new mongoose.Schema({
     },
     studentDob: {type:Date, required: false},
     studentGender: {type:String, required: false},
-    studentEmail: {type:String, required: false},
+    studentEmail: {type:String, required: true,unique:true},
     studentPassword: {type:String, required: false},
     source: {type:String, required: false},
     studentPhone: {
