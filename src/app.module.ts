@@ -10,6 +10,7 @@ import { StudentModule } from './student/student.module';
 import { CrsmoduleModule } from './crsmodule/crsmodule.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { MailModule } from './mail/mail.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { MailModule } from './mail/mail.module';
     StudentModule,
     CrsmoduleModule,
     MailModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
