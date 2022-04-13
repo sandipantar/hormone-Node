@@ -11,7 +11,9 @@ export class EnrolledcourseController {
 
     //create new enrolledcourse
     @Post()
-    async createEnrollCourse(@Body() enrolledcourse:Enrolledcourse) {
+    async createEnrollCourse(
+        @Body("enrolledCourses") enrolledcourse:Enrolledcourse
+    ) {
         const newEnrollCourse = await this.enrolledcourseService.createEnrollCourse(enrolledcourse);
         if(!newEnrollCourse) {
             throw new BadRequestException('Enrolledcourse not created');
