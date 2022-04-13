@@ -20,6 +20,17 @@ export class StudentService {
         // await this.mailService.sendUserConfirmation(newStudent, token);
         return await newStudent.save();
     }
+
+    //send email
+    async sendMail(std:Student) {
+        const token = Math.floor(1000 + Math.random() * 9000).toString();
+        const aaa = await this.mailService.sendUserConfirmation(std, token);
+        if(aaa) {
+            return "mail sent successfully";
+        } else {
+            return "not sent";
+        }
+    }
     
     async findAllStudent(): Promise<Student[] | undefined> {
         return await this.studentModel.find().exec();

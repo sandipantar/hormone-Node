@@ -9,7 +9,7 @@ export class MailService {
   async sendUserConfirmation(std: Student, token: string) {
     const url = `example.com/auth/confirm?token=${token}`;
 
-    await this.mailerService.sendMail({
+    return await this.mailerService.sendMail({
       to: std.studentEmail,
       // from: '"Support Team" <support@kolkatahormonefoundation.com>', // override default from
       subject: 'Welcome to Kolkata Hormone Foundation! Confirm your Email',

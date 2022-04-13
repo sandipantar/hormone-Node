@@ -37,6 +37,14 @@ export class StudentController {
         const newCourses = await this.studentService.addCourse(studentEmail, enrolledCourse);
         return newCourses;
     }
+
+    //send mail
+    @Post('/email/:studentEmail')
+    async sendMail( @Param('studentEmail') studentEmail: string ) {
+        const showStd = await this.studentService.findStudentByEmail(studentEmail);
+        const xcv = await this.studentService.sendMail(showStd);
+        return xcv;
+    }
     
     //get all Student
     @Get()
