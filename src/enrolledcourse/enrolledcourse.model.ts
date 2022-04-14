@@ -49,13 +49,14 @@ export const EnrolledcourseSchema = new mongoose.Schema({
 });
 
 export interface Enrolledcourse {
-    id: string;
+    _id: string;
     studentEmail: string;
     studentName: string;
     courseName: string;
     courseSlug: string;
     fullCourseTaken: boolean;
     modules:[{
+        _id: string;
         modID : string;
         moduleName : string;
         preQusetions:[{  

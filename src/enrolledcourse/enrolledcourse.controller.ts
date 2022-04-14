@@ -70,7 +70,7 @@ export class EnrolledcourseController {
         const newModss = [];
         const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
         for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
-            if(showSinEnCrss.modules[i].modID === exam_modID){
+            if(showSinEnCrss.modules[i]._id === exam_modID){
                 for(let j=0;j<10;j++) {
                     showSinEnCrss.modules[i].preQusetions[j].priAnswer = preAns[j];
                 }
