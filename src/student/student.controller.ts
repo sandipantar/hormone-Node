@@ -39,7 +39,7 @@ export class StudentController {
     }
 
     //send mail
-    @Post('/email/:studentEmail')
+    @Get('/email/:studentEmail')
     async sendMail( @Param('studentEmail') studentEmail: string ) {
         const showStd = await this.studentService.findStudentByEmail(studentEmail);
         const xcv = await this.studentService.sendMail(showStd);
