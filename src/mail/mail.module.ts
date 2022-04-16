@@ -14,7 +14,7 @@ import { join } from 'path';
         secure: true,
         auth: {
           user: 'apikey',
-          pass: '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',
+          pass: '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',
         },
       },
       defaults: {
