@@ -43,6 +43,7 @@ export const EnrolledcourseSchema = new mongoose.Schema({
         preTime: {type:Number, required: false},
         postTime: {type:Number, required: false},
         finalTime: {type:Number, required: false},
+        moduleTeacher: {type:String, required: false}
     }],
     paymentStatus: {type:String, required: false},
     paid: {type:Number, required: false},   
@@ -91,6 +92,7 @@ export interface Enrolledcourse {
         preTime: number;
         postTime: number;
         finalTime: number;
+        moduleTeacher: string;
     }],
     paymentStatus: string;
     paid: number;   
