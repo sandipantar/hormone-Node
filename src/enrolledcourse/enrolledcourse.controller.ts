@@ -59,13 +59,13 @@ export class EnrolledcourseController {
         return statPre;
     }
     //update pre exam status
-    @Patch('/preExamSubmit/:studentEmail/:exam_couseSlug/:exam_modID')
+    @Patch('/preExamSubmit/:studentEmail/:exam_couseSlug/:exam_modID/:score')
     async preExamSubmit( 
         @Param('studentEmail') studentEmail: string,
         @Param('exam_couseSlug') exam_couseSlug: string,
         @Param('exam_modID') exam_modID: string,
-        @Body('preAns') preAns: string[],
-        @Body('preScore') preScore: number
+        @Param('score') score: number,
+        @Body('priiiiAns') preAns: string[],
     ) {
         const newModss = [];
         const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
@@ -74,7 +74,7 @@ export class EnrolledcourseController {
                 for(let j=0;j<10;j++) {
                     showSinEnCrss.modules[i].preQusetions[j].priAnswer = preAns[j];
                 }
-                showSinEnCrss.modules[i].preNumber = preScore;
+                showSinEnCrss.modules[i].preNumber = score;
             }
             newModss.push(showSinEnCrss.modules[i]);
         }
