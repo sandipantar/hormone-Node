@@ -10,15 +10,18 @@ import { join } from 'path';
       // transport: 'smtps://user@example.com:topsecret@smtp.example.com',
       // or
       transport: {
-        host: 'smtp.sendgrid.net',
-        secure: true,
+        host: process.env.MAIL_HOST,
+        port: 465,
+        secure: false,
+        requireTLS: true,
         auth: {
-          user: 'apikey',
-          pass: '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',
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASSWORD
         },
+        logger: true
       },
       defaults: {
-        from: '"No Reply" <noreply@kolkatahormonefoundation.org>',
+        from: process.env.MAIL_FROM,
       },
       template: {
         dir: join(__dirname, 'templates'),
