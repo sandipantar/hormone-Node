@@ -13,7 +13,8 @@ export class MailService {
       to: std.studentEmail,
       // from: '"Support Team" <support@kolkatahormonefoundation.com>', // override default from
       subject: 'Welcome to Kolkata Hormone Foundation! Confirm your Email',
-      template: './confirmation',
+      template: process.cwd()+'/dist/mail/templates/confirmation.hbs',
+      // template: './confirmation',
       context: {
         name: std.studentName,
         url,
