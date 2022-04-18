@@ -50,7 +50,7 @@ export class EnrolledcourseController {
         const newModss = [];
         const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
         for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
-            if(showSinEnCrss.modules[i]._id === exam_modID){
+            if(showSinEnCrss.modules[i]._id == exam_modID){
                 showSinEnCrss.modules[i].preStatus = true;
             }
             newModss.push(showSinEnCrss.modules[i]);
@@ -58,7 +58,25 @@ export class EnrolledcourseController {
         const statPre = await this.enrolledcourseService.updateExamStatusPre(newModss,studentEmail,exam_couseSlug);
         return statPre;
     }
-    //update pre exam status
+    //update post exam status
+    @Patch('/examStatPost/:studentEmail/:exam_couseSlug/:exam_modID')
+    async updateExamStatusPost( 
+        @Param('studentEmail') studentEmail: string,
+        @Param('exam_couseSlug') exam_couseSlug: string,
+        @Param('exam_modID') exam_modID: string
+    ) {
+        const newModss = [];
+        const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
+        for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
+            if(showSinEnCrss.modules[i]._id == exam_modID){
+                showSinEnCrss.modules[i].postStatus = true;
+            }
+            newModss.push(showSinEnCrss.modules[i]);
+        }
+        const statPre = await this.enrolledcourseService.updateExamStatusPre(newModss,studentEmail,exam_couseSlug);
+        return statPre;
+    }
+    //update pre exam submit
     @Patch('/preExamSubmit/:studentEmail/:exam_couseSlug/:exam_modID/:score')
     async preExamSubmit( 
         @Param('studentEmail') studentEmail: string,
@@ -70,11 +88,34 @@ export class EnrolledcourseController {
         const newModss = [];
         const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
         for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
-            if(showSinEnCrss.modules[i]._id === exam_modID){
+            if(showSinEnCrss.modules[i]._id == exam_modID){
                 for(let j=0;j<10;j++) {
                     showSinEnCrss.modules[i].preQusetions[j].priAnswer = preAns[j];
                 }
                 showSinEnCrss.modules[i].preNumber = score;
+            }
+            newModss.push(showSinEnCrss.modules[i]);
+        }
+        const statPre = await this.enrolledcourseService.updateExamStatusPre(newModss,studentEmail,exam_couseSlug);
+        return statPre;
+    }
+    //update pre exam submit
+    @Patch('/postExamSubmit/:studentEmail/:exam_couseSlug/:exam_modID/:score')
+    async postExamSubmit( 
+        @Param('studentEmail') studentEmail: string,
+        @Param('exam_couseSlug') exam_couseSlug: string,
+        @Param('exam_modID') exam_modID: string,
+        @Param('score') score: number,
+        @Body('priiiiAns') preAns: string[],
+    ) {
+        const newModss = [];
+        const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
+        for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
+            if(showSinEnCrss.modules[i]._id == exam_modID){
+                for(let j=0;j<10;j++) {
+                    showSinEnCrss.modules[i].preQusetions[j].postAnswer = preAns[j];
+                }
+                showSinEnCrss.modules[i].postNumber = score;
             }
             newModss.push(showSinEnCrss.modules[i]);
         }
