@@ -61,6 +61,15 @@ export class CrsmoduleService {
     async uploadContent(file:Express.Multer.File, moduleId: string){
         const blobClient = this.getBlobClient(file.originalname);
         await blobClient.uploadData(file.buffer);
+        const conURL = "https://hormonestorage.blob.core.windows.net/contents/"+file.originalname;
+        return await this.crsmoduleModel.findOneAndUpdate(
+            {"_id": moduleId}, 
+            {$push: { moduleContent: {
+                name : file.originalname,
+                location : conURL
+            }} 
+            }
+        );
     }
     
     async getContentStream(fileName: string){

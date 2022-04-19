@@ -13,7 +13,7 @@ export const CrsmoduleSchema = new mongoose.Schema({
         corporatePrice:{type:Number,required: false},
         selfPrice:{type:Number,required: false}
     },
-    moduleContent: [{
+    moduleContent: [{ 
         name : {type:String,required: false},
         location : {type:String,required: false}
     }],

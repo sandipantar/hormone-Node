@@ -30,6 +30,10 @@ export const EnrolledcourseSchema = new mongoose.Schema({
             oriAnswer : {type:String, required: false},
             finalAnswer : {type:String, required: false},
         }],
+        moduleContent: [{ 
+            name : {type:String,required: false},
+            location : {type:String,required: false}
+        }],
         preStatus: {type:Boolean, required: false},
         postStatus: {type:Boolean, required: false},
         finalStatus: {type:Boolean, required: false},
@@ -79,6 +83,10 @@ export interface Enrolledcourse {
             oriAnswer : string;
             finalAnswer : string;
         }],
+        moduleContent: [{ 
+            name : string;
+            location : string;
+        }];
         preStatus: boolean;
         postStatus: boolean;
         finalStatus: boolean;
