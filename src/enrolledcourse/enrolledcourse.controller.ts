@@ -92,7 +92,20 @@ export class EnrolledcourseController {
         const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
         for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
             if(showSinEnCrss.modules[i]._id == exam_modID){
-                showSinEnCrss.modules[i].postStatus = true;
+                if(showSinEnCrss.modules[i].postStatus3) {
+                    showSinEnCrss.modules[i].postStatus = true;
+                } else {
+                    if(showSinEnCrss.modules[i].postStatus2) {
+                        showSinEnCrss.modules[i].postStatus3 = true;
+                        showSinEnCrss.modules[i].postStatus = true;
+                    } else {
+                        if(showSinEnCrss.modules[i].postStatus1) {
+                            showSinEnCrss.modules[i].postStatus2 = true;
+                        } else {
+                            showSinEnCrss.modules[i].postStatus1 = true;
+                        }
+                    }
+                }
             }
             newModss.push(showSinEnCrss.modules[i]);
         }
@@ -112,10 +125,45 @@ export class EnrolledcourseController {
         const showSinEnCrss = await this.enrolledcourseService.getSnglEnrlCrs(studentEmail,exam_couseSlug);
         for(let i=0,nn=showSinEnCrss.modules.length;i<nn;i++) {
             if(showSinEnCrss.modules[i]._id == exam_modID){
-                for(let j=0;j<10;j++) {
-                    showSinEnCrss.modules[i].preQusetions[j].postAnswer = preAns[j];
+                if(showSinEnCrss.modules[i].postStatus3) {
+                    for(let j2=0;j2<10;j2++) {
+                        showSinEnCrss.modules[i].preQusetions[j2].postAnswer3 = preAns[j2];
+                    }
+                    showSinEnCrss.modules[i].postNumber3 = score;
+                } else {
+                    if(showSinEnCrss.modules[i].postStatus2) {
+                        for(let j1=0;j1<10;j1++) {
+                            showSinEnCrss.modules[i].preQusetions[j1].postAnswer2 = preAns[j1];
+                        }
+                        showSinEnCrss.modules[i].postNumber2 = score;
+                    } else {
+                        if(showSinEnCrss.modules[i].postStatus1) {
+                            for(let j=0;j<10;j++) {
+                                showSinEnCrss.modules[i].preQusetions[j].postAnswer = preAns[j];
+                            }
+                            showSinEnCrss.modules[i].postNumber = score;
+                        }
+                    }
                 }
-                showSinEnCrss.modules[i].postNumber = score;
+
+
+                // if(showSinEnCrss.modules[i].postStatus1 && showSinEnCrss.modules[i].postNumber==0) {
+                //     for(let j=0;j<10;j++) {
+                //         showSinEnCrss.modules[i].preQusetions[j].postAnswer = preAns[j];
+                //     }
+                //     showSinEnCrss.modules[i].postNumber = score;
+                // } else if(showSinEnCrss.modules[i].postStatus2 && showSinEnCrss.modules[i].postNumber2==0) {
+                //     for(let j1=0;j1<10;j1++) {
+                //         showSinEnCrss.modules[i].preQusetions[j1].postAnswer2 = preAns[j1];
+                //     }
+                //     showSinEnCrss.modules[i].postNumber2 = score;
+
+                // } else if(showSinEnCrss.modules[i].postStatus3 && showSinEnCrss.modules[i].postNumber3==0) {
+                //     for(let j2=0;j2<10;j2++) {
+                //         showSinEnCrss.modules[i].preQusetions[j2].postAnswer3 = preAns[j2];
+                //     }
+                //     showSinEnCrss.modules[i].postNumber3 = score;
+                // }
             }
             newModss.push(showSinEnCrss.modules[i]);
         }

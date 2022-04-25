@@ -120,7 +120,7 @@ export class StudentController {
         const update = await this.studentService.updateStudent(studentEmail, showStd);
         return update;
     }
-    //update pre exam answer
+    //update pre exam status
     @Patch('/examStatP/:studentEmail/:exam_couseSlug/:exam_modID')
     async updateExamStatusP( 
         @Param('studentEmail') studentEmail: string,

@@ -20,6 +20,8 @@ export const EnrolledcourseSchema = new mongoose.Schema({
             oriAnswer : {type:String, required: false},
             priAnswer : {type:String, required: false},
             postAnswer : {type:String, required: false},
+            postAnswer2 : {type:String, required: false},
+            postAnswer3 : {type:String, required: false},
         }],
         finalQusetions:[{  
             question : {type:String, required: false},
@@ -29,6 +31,8 @@ export const EnrolledcourseSchema = new mongoose.Schema({
             option4 : {type:String, required: false},
             oriAnswer : {type:String, required: false},
             finalAnswer : {type:String, required: false},
+            finalAnswer2 : {type:String, required: false},
+            finalAnswer3 : {type:String, required: false},
         }],
         moduleContent: [{ 
             name : {type:String,required: false},
@@ -37,6 +41,12 @@ export const EnrolledcourseSchema = new mongoose.Schema({
         preStatus: {type:Boolean, required: false},
         postStatus: {type:Boolean, required: false},
         finalStatus: {type:Boolean, required: false},
+        postStatus1: {type:Boolean, required: false},
+        finalStatus1: {type:Boolean, required: false},
+        postStatus2: {type:Boolean, required: false},
+        finalStatus2: {type:Boolean, required: false},
+        postStatus3: {type:Boolean, required: false},
+        finalStatus3: {type:Boolean, required: false},
         preNumber: {type:Number, required: false},
         postNumber: {type:Number, required: false},
         postNumber2: {type:Number, required: false},
@@ -73,6 +83,8 @@ export interface Enrolledcourse {
             oriAnswer : string;
             priAnswer : string;
             postAnswer : string;
+            postAnswer2 : string;
+            postAnswer3 : string;
         }],
         finalQusetions:[{  
             question : string;
@@ -82,6 +94,8 @@ export interface Enrolledcourse {
             option4 : string;
             oriAnswer : string;
             finalAnswer : string;
+            finalAnswer2 : string;
+            finalAnswer3 : string;
         }],
         moduleContent: [{ 
             name : string;
@@ -89,6 +103,12 @@ export interface Enrolledcourse {
         }];
         preStatus: boolean;
         postStatus: boolean;
+        postStatus1: boolean;
+        finalStatus1: boolean;
+        postStatus2: boolean;
+        finalStatus2: boolean;
+        postStatus3: boolean;
+        finalStatus3: boolean;
         finalStatus: boolean;
         preNumber: number;
         postNumber: number;
